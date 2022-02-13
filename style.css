@@ -22,7 +22,7 @@ body{
 .flower__glass{
     width:20vmin;
     height: 30vmin;
-    background-image: linear-gradient(to left,#142544,#104d4e);
+    background-image: linear-gradient(to left,#142544,#1a9092);
     clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
     opacity: .8;
 }
@@ -35,6 +35,16 @@ body{
     background-color: #182843;
     width: 100%;
     height: 2vmin;
+}
+
+.flower__glass::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to left,#142544,#1b6d6e);
+    width: 100%;
+    height: 15vmin;
 }
 
 .f-wrapper{
@@ -139,7 +149,6 @@ body{
     bottom: 3vmin;
     left: -30%;
     transform: rotate(-50deg);
-    animation: open-3d  1s 1.2s forwards;
     background-image: linear-gradient(to left bottom, #ff43b6 ,#4d1337);;
 }
 
@@ -221,9 +230,26 @@ body{
     clip-path: none;
     border-radius: 10vmin 2vmin 10vmin 2vmin;
     transform: rotate(-55deg);
-    animation: open-3d  2s 1.2s forwards;
     background-image: linear-gradient(to left bottom, #ffa085 ,#eb8b8b,#492f2f 98%);
 }
+
+.flower__fall-down--pink{
+    transform-origin: 50% 100%;
+    animation: flower-fall-down-pink  5s 1.2s linear forwards;
+}
+
+.flower__fall-down--yellow{
+    transform-origin: 50% 110%;
+    animation: flower-fall-down-yellow  8s 1.2s linear forwards;
+}
+
+
+.flower__fall-down--purple{
+    bottom: 3vmin !important;
+    transform-origin: 60% 110%;
+    animation:flower-fall-down-purple  6s 1.2s linear forwards,     flower-falling 6s 7.2s linear infinite;
+    }
+
 
 @keyframes open-flower{
         0%{
@@ -238,9 +264,84 @@ body{
     }
 }
 
-@keyframes open-3d {
+@keyframes flower-fall-down-pink {
+
+    0%{
+        transform: rotate(-55deg);
+    }
+
+    50%{
+        transform: rotateX(-100deg);
+    }
+
     100%{
-        transform: rotateX(100deg);
-        opacity: 0;
+        transform:translate(2vmin,28vmin);
+    }
+
+}
+
+@keyframes flower-fall-down-yellow {
+
+    0%{
+        transform: rotate(-55deg);
+    }
+
+    50%{
+        transform: rotateX(-100deg);
+    }
+
+    100%{
+        transform:translate(2vmin,70vmin) rotate(150deg);
+    }
+
+}
+
+@keyframes flower-fall-down-purple {
+
+    0%{
+        transform: rotate(-50deg);
+    }
+
+    25%{
+        transform: rotateX(-100deg);
+        perspective: 0px;
+    }
+
+    50%{
+        perspective: 0px;
+        transform:translate(-30vmin,2vmin) rotate(90deg);
+    }
+
+    75%{
+        perspective: 0px;
+        transform:translate(-34vmin,-2vmin);
+    }
+
+    100%{
+        transform-origin: center;
+        transform:translate(-34vmin,-2vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+}
+
+@keyframes flower-falling {
+    0%,100%{
+        transform-origin: center;
+        transform:translate(-34vmin,-2vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+    25%{
+        transform-origin: center;
+        transform:translate(-34.4vmin,-2vmin) rotateY(-84deg) rotateX(35deg);
+    }
+
+    50%{
+        transform-origin: center;
+        transform:translate(-32vmin,-5vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+    75%{
+        transform-origin: center;
+        transform:translate(-36vmin,.2vmin) rotateY(-80deg) rotateX(35deg);
     }
 }
